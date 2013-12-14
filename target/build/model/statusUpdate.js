@@ -1,0 +1,1 @@
+define(["base/observable"],function(a){var b=a.extend({init:function(){this._super()}});b.prototype.edit=function(a){this.message=a};return b})

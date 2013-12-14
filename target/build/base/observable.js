@@ -1,0 +1,1 @@
+define(["base/base","base/mediator","base/logger"],function(a,b,c){var d=a.extend({publishEvent:function(a){c.log(c.messageType.evntPublish,a),b.publish(a)},subscribeEvent:function(a,d){c.log(c.messageType.evntSubscribeh,a),b.subscribe(a,d)}});return d})
