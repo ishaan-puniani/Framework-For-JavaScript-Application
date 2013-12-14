@@ -1,0 +1,162 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+      
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.CodeRower.javascript</groupId>
+    <artifactId>Framework-For-JavaScript-Application</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Framework-For-JavaScript-Application</name>
+	 <url>http://coderower.com</url>
+    <inceptionYear>2013</inceptionYear>
+
+    <developers>
+        <developer>
+            <id>ishaan</id>
+            <name>Ishaan Puniani</name>
+            <email>ishaan.puniani@gmail.com</email>
+        </developer>
+    </developers>
+    <build>
+        
+        <defaultGoal>clean install process-classes</defaultGoal>
+        
+        <!-- javascript resource location -->
+        <resources>
+            <resource>
+                <directory>src/main/js</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        
+        <plugins>
+            
+            <!-- jasmine BDD test framework -->
+            <plugin>
+                <groupId>com.github.searls</groupId>
+                <artifactId>jasmine-maven-plugin</artifactId>
+                <version>1.0.2-beta-5</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generateManualRunner</goal>
+                            <goal>resources</goal>
+                            <goal>testResources</goal>
+                            <goal>test</goal>
+                            <goal>preparePackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <jsSrcDir>src/main/js</jsSrcDir>
+                    <jsTestSrcDir>src/test/js</jsTestSrcDir>
+                    <sourceExcludes>
+                        <exclude>**/*.js</exclude>
+                    </sourceExcludes>
+					<srcDirectoryName>src/main/js</srcDirectoryName>
+                    <preloadSources>
+                        <source>require.js</source>
+                        <source>src/test/js/helpers/RequireJSHelper.js</source>
+                    </preloadSources>
+			<!--
+                    <customRunnerTemplate>${basedir}/src/test/resources/jasmineRequireJSRunner.html</customRunnerTemplate>
+			-->
+                </configuration>
+            </plugin>
+            
+            <!-- attach sources to target for later use -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.1.2</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <!-- command-line linting -->
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>yuicompressor-maven-plugin</artifactId>
+                <version>1.2</version>
+                <executions>
+                    <execution>
+                        <id>lint-js</id>
+                        <goals>
+                            <goal>jslint</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <nosuffix>false</nosuffix>
+                    <excludes>
+                        <exclude>**/*-min.js</exclude>
+                        <exclude>**/*.pack.js</exclude>
+                        <exclude>**/compressed.css</exclude>
+                        <exclude>**/require.js</exclude>
+                    </excludes>
+                    <!-- [aggregation has been disabled because I'm using CommonJS
+                          modules]
+                    -->
+                </configuration>
+            </plugin>
+            
+            <!-- aggregate & minify RequireJS (module) based JS -->
+            <plugin>
+                <groupId>com.voltvoodoo</groupId>
+                <artifactId>brew</artifactId>
+                <version>0.2.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>optimize</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <optimizeSourceDir>${basedir}/src/main/js</optimizeSourceDir>
+                    <optimizeBuildDir>${basedir}/target/build</optimizeBuildDir>
+                </configuration>
+            </plugin>
+            
+        </plugins>
+        
+    </build>
+  
+    <reporting>
+        <plugins>            
+            
+            <!-- jslint and jsdoc reporting -->
+            <plugin>
+                <groupId>gr.abiss.mvn.plugins</groupId>
+                <artifactId>maven-jstools-plugin</artifactId>
+                <version>0.7</version>
+                <inherited>false</inherited>
+                <configuration>
+                    <jsDir>src/main/js</jsDir>
+                    <includes>**/*.js</includes>
+                    <excludes>require.js</excludes>
+                    <includePrivate>true</includePrivate>
+                    <includeUndocumented>true</includeUndocumented>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>jslint</report>
+                            <report>jsdoc</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            
+           
+        </plugins>
+    </reporting>
+  
+</project>
