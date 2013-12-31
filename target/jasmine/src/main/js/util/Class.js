@@ -1,8 +1,3 @@
-/* Simple JavaScript Inheritance
- * By John Resig http://ejohn.org/
- * MIT Licensed.
- */
-// Inspired by base2 and Prototype
 (function(){
   var initializing = false, fnTest = /xyz/.test(function(){xyz;}) ? /\b_super\b/ : /.*/;
   // The base Class implementation (does nothing)
@@ -58,6 +53,9 @@
     // And make this class extendable
     Class.extend = arguments.callee;
     
+	// adds the reference of the base class used for calling overriden methods of base class
+    Class.prototype.base = _super;
+	
     return Class;
   };
 })();
