@@ -1,0 +1,1 @@
+define(["util/Class"],function(){var a=Class.extend({init:function(){}});return a})

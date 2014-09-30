@@ -1,0 +1,99 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="NAME">define</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>  2</span> 
+<span class='line'>  3</span>     </span><span class="COMM">/** 
+<span class='line'>  4</span>      * Application Logger 
+<span class='line'>  5</span>      * @name logger
+<span class='line'>  6</span>      * @class logger
+<span class='line'>  7</span>      * @author Ishaan Puniani -- 11-10-2013
+<span class='line'>  8</span>      * @description Logger top log all kind of errors , info messages etc.
+<span class='line'>  9</span>      * @extends 
+<span class='line'> 10</span>      * @modeified 
+<span class='line'> 11</span>      * @requires 
+<span class='line'> 12</span>      * @example
+<span class='line'> 13</span>      * 
+<span class='line'> 14</span>      * logger.log("this is logged");
+<span class='line'> 15</span>      * 
+<span class='line'> 16</span>      * @constructor init
+<span class='line'> 17</span>      * @return 
+<span class='line'> 18</span>      */</span><span class="WHIT">
+<span class='line'> 19</span>     </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">logger</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 20</span>         </span><span class="COMM">/**
+<span class='line'> 21</span>          * Constant field to add type information while logging 
+<span class='line'> 22</span>          * @name logger#messageType
+<span class='line'> 23</span>          * @constant Message Type that is going to be logged
+<span class='line'> 24</span>          * @author Ishaan Puniani -- 11-10-2013
+<span class='line'> 25</span>          * @description Type of Message to be logged like "Error-", "Information-"
+<span class='line'> 26</span>          * @example
+<span class='line'> 27</span>          * 
+<span class='line'> 28</span>          *  logger.messageType.info
+<span class='line'> 29</span>          *  logger.messageType.error
+<span class='line'> 30</span>          *  logger.messageType.evntSubscribe
+<span class='line'> 31</span>          *  logger.messageType.evntPublish
+<span class='line'> 32</span>          *  
+<span class='line'> 33</span>          */</span><span class="WHIT">
+<span class='line'> 34</span>         </span><span class="NAME">messageType</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 35</span>             </span><span class="NAME">info</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"Information"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 36</span>             </span><span class="NAME">error</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"Error"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 37</span>             </span><span class="NAME">evntSubscribe</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"SubscribeEvent"</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 38</span>             </span><span class="NAME">evntPublish</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"PublishEvent"</span><span class="WHIT">
+<span class='line'> 39</span>         </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 40</span>         </span><span class="COMM">/**
+<span class='line'> 41</span>          * Method to log messages
+<span class='line'> 42</span>          * @name logger#log
+<span class='line'> 43</span>          * @function log
+<span class='line'> 44</span>          * @author Ishaan Puniani -- 11-10-2013
+<span class='line'> 45</span>          * @description Method to log messages, Errors etc
+<span class='line'> 46</span>          * @example
+<span class='line'> 47</span>          * 
+<span class='line'> 48</span>          * logger.log(logger.messageType.evntPublish,evnt);
+<span class='line'> 49</span>          *  
+<span class='line'> 50</span>          *  @param {string} type message type to be logged
+<span class='line'> 51</span>          *  @param {string} txtMessage Message to be logged
+<span class='line'> 52</span>          */</span><span class="WHIT">
+<span class='line'> 53</span>         </span><span class="NAME">log</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">txtMessage</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 54</span>             </span><span class="NAME">console.log</span><span class="PUNC">(</span><span class="NAME">type</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">" - "</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">txtMessage</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 55</span>         </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 56</span>         </span><span class="COMM">/**
+<span class='line'> 57</span>          * Method to log errors
+<span class='line'> 58</span>          * @name logger#logError
+<span class='line'> 59</span>          * @function logError
+<span class='line'> 60</span>          * @author Ishaan Puniani -- 11-10-2013
+<span class='line'> 61</span>          * @description Method to log Errors 
+<span class='line'> 62</span>          * @example
+<span class='line'> 63</span>          * 
+<span class='line'> 64</span>          * logger.logError(error message);
+<span class='line'> 65</span>          *  
+<span class='line'> 66</span>          *  @param {string} message Message to be logged
+<span class='line'> 67</span>          */</span><span class="WHIT">
+<span class='line'> 68</span>         </span><span class="NAME">logError</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">message</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 69</span>             </span><span class="NAME">this.log</span><span class="PUNC">(</span><span class="NAME">this.messageType.error</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">message</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 70</span>         </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 71</span>         </span><span class="COMM">/**
+<span class='line'> 72</span>          * Method to log Information
+<span class='line'> 73</span>          * @name logger#logInfo
+<span class='line'> 74</span>          * @function logInfo
+<span class='line'> 75</span>          * @author Ishaan Puniani -- 11-10-2013
+<span class='line'> 76</span>          * @description Method to log Information
+<span class='line'> 77</span>          * @example
+<span class='line'> 78</span>          * 
+<span class='line'> 79</span>          * logger.logInfo(info);
+<span class='line'> 80</span>          *  
+<span class='line'> 81</span>          *  @param {string} info Information to be logged
+<span class='line'> 82</span>          */</span><span class="WHIT">
+<span class='line'> 83</span>         </span><span class="NAME">logInfo</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">info</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 84</span>             </span><span class="NAME">this.log</span><span class="PUNC">(</span><span class="NAME">this.messageType.info</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">info</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 85</span>         </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 86</span>     </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 87</span> 
+<span class='line'> 88</span>     </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">logger</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 90</span> 
+<span class='line'> 91</span> 
+<span class='line'> 92</span> </span></pre></body></html>

@@ -1,0 +1,1 @@
+define(function(){var a={messageType:{info:"Information",error:"Error",evntSubscribe:"SubscribeEvent",evntPublish:"PublishEvent"},log:function(a,b){console.log(a+" - "+b)},logError:function(a){this.log(this.messageType.error,a)},logInfo:function(a){this.log(this.messageType.info,a)}};return a})

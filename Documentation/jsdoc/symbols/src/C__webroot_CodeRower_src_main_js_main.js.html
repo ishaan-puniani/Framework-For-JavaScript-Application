@@ -1,0 +1,43 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-43444091-1', 'coderower.com');
+  ga('send', 'pageview');
+
+</script> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="NAME">require.config</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>  2</span>     </span><span class="COMM">// paths are analogous to old-school &lt;script> tags, in order to reference js scripts</span><span class="WHIT">
+<span class='line'>  3</span>     </span><span class="NAME">paths</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>  4</span>         </span><span class="NAME">Class</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"util/Class"</span><span class="WHIT">
+<span class='line'>  5</span>     </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>  6</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  7</span> 
+<span class='line'>  8</span> </span><span class="COMM">/*
+<span class='line'>  9</span>  * Module to define main
+<span class='line'> 10</span>  */</span><span class="WHIT">
+<span class='line'> 11</span> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="STRN">"model/statusUpdate"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"model/user"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"service/gui"</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">StatusUpdate</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">User</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Gui</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 12</span> 
+<span class='line'> 13</span>     </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">testUser</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">User</span><span class="PUNC">(</span><span class="STRN">"1"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"testUser"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 14</span>     </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">update</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">StatusUpdate</span><span class="PUNC">(</span><span class="STRN">"Hello World"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">testUser</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 15</span> 
+<span class='line'> 16</span>     </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">container</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Gui</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="NAME">tag</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"div"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"container"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">renderTo</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"body"</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 17</span> 
+<span class='line'> 18</span>     </span><span class="COMM">// Create a DOM element of type "button" </span><span class="WHIT">
+<span class='line'> 19</span>     </span><span class="COMM">// and configure its click event to raise the "btnSayHello:Click" event.</span><span class="WHIT">
+<span class='line'> 20</span>     </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">elemnt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Gui</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="NAME">tag</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"button"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">id</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"btnFireEvent"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">clickable</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 21</span>             </span><span class="NAME">onClickEvent</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 22</span>                 </span><span class="NAME">this.publishEvent</span><span class="PUNC">(</span><span class="STRN">"btnSayHello:Click"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 23</span>             </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 24</span>         </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">renderTo</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"container"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">innerText</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">"Say Hello!"</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 25</span> 
+<span class='line'> 26</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 27</span> </span></pre></body></html>
